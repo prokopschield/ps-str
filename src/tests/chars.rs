@@ -9,7 +9,11 @@ use crate::Utf8Encoder;
 
 #[test]
 pub fn char_table() -> Result<(), std::io::Error> {
-    let mut file = OpenOptions::new().create(true).write(true).open("chars")?;
+    let mut file = OpenOptions::new()
+        .create(true)
+        .write(true)
+        .truncate(true)
+        .open("chars")?;
 
     writeln!(file, "0x00 CAN LA1 LA2 W52 W50 L1 L2 W2 W0")?;
 
