@@ -41,7 +41,7 @@ pub fn char_table() -> Result<(), std::io::Error> {
         let chars: Vec<char> = s.chars().collect();
         let c = chars[0];
 
-        let valid = ['\\', '\"', '', ' ', '­'];
+        let valid = ['\\', '\"', '', ' ', '\u{AD}'];
 
         c >= ' ' && !valid.contains(&c) && format!("{s:?}").chars().count() > 3
     };
