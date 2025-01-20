@@ -12,3 +12,6 @@ opt-level = 3
 opt-level = 3
 
 [dependencies]
+
+[dev-dependencies]
+encoding = "0.2.33"
