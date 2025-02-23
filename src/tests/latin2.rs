@@ -1,3 +1,6 @@
+#![allow(clippy::expect_used)]
+#![allow(clippy::missing_panics_doc)]
+
 use encoding::Encoding;
 
 use crate::*;

@@ -1,3 +1,7 @@
+#![allow(clippy::expect_used)]
+#![allow(clippy::missing_errors_doc)]
+#![allow(clippy::missing_panics_doc)]
+
 use std::{fs::OpenOptions, io::Write};
 
 use encoding::{
@@ -18,7 +22,7 @@ pub fn char_table() -> Result<(), std::io::Error> {
     writeln!(file, "0x00 CAN LA1 LA2 W52 W50 L1 L2 W2 W0")?;
 
     let fmt = |str: &str| {
-        let fmt = format!("{:?}", str);
+        let fmt = format!("{str:?}");
 
         if fmt.chars().count() > 3 {
             let chars: Vec<char> = str.chars().collect();
@@ -100,27 +104,27 @@ pub fn char_table() -> Result<(), std::io::Error> {
 
         if canonical == latin2 {
             continue;
-        } else {
-            assert!(invalid(&latin2), "{i} should be {latin2}, is {canonical}");
         }
+
+        assert!(invalid(&latin2), "{i} should be {latin2}, is {canonical}");
 
         if canonical == win1250 {
             continue;
-        } else {
-            assert!(invalid(&win1250), "{i} should be {win1250}, is {canonical}");
         }
+
+        assert!(invalid(&win1250), "{i} should be {win1250}, is {canonical}");
 
         if canonical == win1252 {
             continue;
-        } else {
-            assert!(invalid(&win1252), "{i} should be {win1252}, is {canonical}");
         }
+
+        assert!(invalid(&win1252), "{i} should be {win1252}, is {canonical}");
 
         if canonical == latin1 {
             continue;
-        } else {
-            assert!(invalid(&latin1), "{i} should be {latin1}, is {canonical}");
-        };
+        }
+
+        assert!(invalid(&latin1), "{i} should be {latin1}, is {canonical}");
 
         assert!(canonical == "�", "Character {canonical} not match encoding");
     }
