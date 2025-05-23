@@ -1,17 +1,17 @@
 [package]
 name = "ps-str"
 version = "0.1.0-2"
+edition = "2021"
 description = "String transcoding library"
 license = "GPL-3.0-or-later"
-edition = "2021"
+
+[dependencies]
+
+[dev-dependencies]
+encoding = "0.2.33"
 
 [profile.dev]
 opt-level = 3
 
 [profile.release]
 opt-level = 3
-
-[dependencies]
-
-[dev-dependencies]
-encoding = "0.2.33"
