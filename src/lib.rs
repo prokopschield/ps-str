@@ -23,6 +23,8 @@ impl<T: AsRef<[u8]>> Utf8Encoder for T {
                 Err(e) => {
                     if e.valid_up_to() > 0 {
                         let valid_part = &bytes[i..i + e.valid_up_to()];
+
+                        // SAFETY: valid_up_to() guarantees this slice contains only complete, valid UTF-8 characters
                         result.push_str(unsafe { std::str::from_utf8_unchecked(valid_part) });
                         i += e.valid_up_to();
                     }
