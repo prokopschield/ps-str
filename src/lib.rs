@@ -27,8 +27,10 @@ impl<T: AsRef<[u8]>> Utf8Encoder for T {
                         i += e.valid_up_to();
                     }
 
-                    result.push(CHARS[bytes[i] as usize]);
-                    i += 1;
+                    if let Some(c) = bytes.get(i) {
+                        result.push(CHARS[*c as usize]);
+                        i += 1;
+                    }
                 }
             }
         }
