@@ -2,6 +2,7 @@
 name = "ps-str"
 version = "0.1.0-3"
 edition = "2021"
+rust-version = "1.74"
 description = "String transcoding library"
 license = "GPL-3.0-or-later"
 

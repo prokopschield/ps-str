@@ -1,5 +1,8 @@
 pub mod chars;
+pub mod path;
+
 pub use chars::CHARS;
+pub use path::PathUtf8Encoder;
 
 #[cfg(test)]
 pub mod tests;
