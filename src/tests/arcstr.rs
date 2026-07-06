@@ -1,8 +1,6 @@
 #![allow(clippy::missing_panics_doc)]
 
-use arcstr::ArcStr;
-
-use crate::{ArcStrUtf8Encoder, Utf8Encoder};
+use crate::{literal, ArcStr, ArcStrUtf8Encoder, Utf8Encoder};
 
 #[test]
 pub fn valid_utf8_roundtrips() {
@@ -23,6 +21,13 @@ pub fn empty_input_yields_empty_arcstr() {
     let bytes: &[u8] = b"";
 
     assert_eq!(bytes.to_utf8_arcstr(), ArcStr::new());
+}
+
+#[test]
+pub fn literal_macro_is_reexported() {
+    let str: ArcStr = literal!("hello");
+
+    assert_eq!(str, "hello");
 }
 
 #[test]
