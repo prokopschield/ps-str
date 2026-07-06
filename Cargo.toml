@@ -7,9 +7,13 @@ description = "String transcoding library"
 license = "GPL-3.0-or-later"
 
 [dependencies]
+arcstr = { version = "1.2", default-features = false, optional = true }
 
 [dev-dependencies]
 encoding = "0.2.33"
+
+[features]
+arcstr = ["dep:arcstr"]
 
 [profile.dev]
 opt-level = 3
