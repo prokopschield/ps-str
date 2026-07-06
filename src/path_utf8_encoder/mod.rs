@@ -1,8 +1,8 @@
-use crate::Utf8Encoder;
+mod variants;
 
 /// Extension trait for encoding paths to UTF-8 strings.
 ///
-/// This is a separate trait from `Utf8Encoder` due to Rust's coherence rules
+/// This is a separate trait from [`Utf8Encoder`](crate::Utf8Encoder) due to Rust's coherence rules
 /// preventing blanket implementations from coexisting with specific type implementations.
 pub trait PathUtf8Encoder {
     /// Converts a path to a UTF-8 string, replacing invalid bytes with fallback characters.
@@ -18,16 +18,4 @@ pub trait PathUtf8Encoder {
     /// assert_eq!(encoded, "hello.txt");
     /// ```
     fn to_utf8_string(&self) -> String;
-}
-
-impl PathUtf8Encoder for std::path::Path {
-    fn to_utf8_string(&self) -> String {
-        self.as_os_str().as_encoded_bytes().to_utf8_string()
-    }
-}
-
-impl PathUtf8Encoder for std::path::PathBuf {
-    fn to_utf8_string(&self) -> String {
-        self.as_path().to_utf8_string()
-    }
 }
